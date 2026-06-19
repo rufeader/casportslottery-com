@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国体育彩票 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f2f2;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #2e2e2e;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .page-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 目录感标题 */
+    .hero {
+      margin-bottom: 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: 1px;
+      color: #1e3d2f;
+      border-left: 6px solid #b8860b;
+      padding-left: 1.2rem;
+    }
+
+    .hero .sub {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #5e6b5e;
+      padding-left: 1.8rem;
+      border-bottom: 1px solid #d0d0d0;
+      padding-bottom: 0.6rem;
+    }
+
+    /* 卡片网格（目录区） */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid #e4e4e4;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1a3a2a;
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid #eae7dd;
+      padding-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 0.4rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #edf3ea;
+      color: #2d5c3f;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-top: 0.5rem;
+    }
+
+    /* 说明区 — 像文档说明卡 */
+    .info-block {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #e2e2e2;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-block h2 {
+      font-size: 1.5rem;
+      font-weight: 480;
+      color: #1f3d2d;
+      margin-bottom: 1rem;
+      border-left: 4px solid #b8860b;
+      padding-left: 0.8rem;
+    }
+
+    .info-block p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #3a3a3a;
+    }
+
+    .info-block .note {
+      background: #f8f6f0;
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      border-left: 4px solid #bc955a;
+      color: #3f4d3f;
+    }
+
+    /* 提示区 */
+    .tip-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tip-box {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      flex: 1 1 200px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .tip-box .icon {
+      font-size: 1.4rem;
+      margin-right: 0.4rem;
+    }
+
+    .tip-box h4 {
+      font-weight: 500;
+      color: #1c3b2b;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .tip-box p {
+      font-size: 0.9rem;
+      color: #4d4d4d;
+    }
+
+    /* 相关信息区（FAQ 摘要风格） */
+    .related-section {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #e2e2e2;
+      margin-bottom: 2rem;
+    }
+
+    .related-section h2 {
+      font-size: 1.5rem;
+      font-weight: 480;
+      color: #1f3d2d;
+      margin-bottom: 1.4rem;
+      border-left: 4px solid #b8860b;
+      padding-left: 0.8rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed #e7e7e7;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 520;
+      color: #2c4a38;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: #4a4a4a;
+    }
+
+    .faq-a a {
+      color: #1e6b4a;
+      text-decoration: none;
+      border-bottom: 1px dotted #b0c8b0;
+    }
+
+    .faq-a a:hover {
+      border-bottom: 1px solid #1e6b4a;
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6f7a6f;
+      border-top: 1px solid #d6d6d6;
+      padding-top: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .footer-note a {
+      color: #2d5c3f;
+      text-decoration: none;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+        padding-left: 0.8rem;
+      }
+      .card-grid {
+        gap: 1rem;
+      }
+      .info-block, .related-section {
+        padding: 1.2rem 1rem;
+      }
+      .tip-area {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero / 目录标题 -->
+  <div class="hero">
+    <h1>中国体育彩票 · 知识库</h1>
+    <div class="sub">稳定入口 · 说明 · 常见信息</div>
+  </div>
+
+  <!-- 目录感卡片网格 -->
+  <div class="card-grid">
+    <div class="card">
+      <h3>品牌背景</h3>
+      <p>中国体育彩票由国家发行，公益金广泛用于体育事业与社会公益。</p>
+      <span class="tag">公益属性</span>
+    </div>
+    <div class="card">
+      <h3>玩法种类</h3>
+      <p>包括超级大乐透、竞彩、即开票等，规则清晰，公开透明。</p>
+      <span class="tag">常见类型</span>
+    </div>
+    <div class="card">
+      <h3>购买方式</h3>
+      <p>线下实体店覆盖全国，线上信息可参考官方渠道说明。</p>
+      <span class="tag">实体网点</span>
+    </div>
+    <div class="card">
+      <h3>责任与理性</h3>
+      <p>量力而行，快乐购彩。未成年人不得购彩和兑奖。</p>
+      <span class="tag">理性提示</span>
+    </div>
+  </div>
+
+  <!-- 说明区 -->
+  <div class="info-block">
+    <h2>关于本页面</h2>
+    <p>这里是围绕 <a href="https://casportslottery.com">中国体育彩票</a> 整理的知识库入口页，汇集了基础信息、常见疑问以及相关说明。内容力求清晰客观，便于初次接触或希望了解框架的朋友快速建立认知。</p>
+    <p>中国体育彩票自发行以来，始终遵循“来之于民，用之于民”的原则，所筹集的公益金支持了全民健身、奥运争光、补充社保基金、教育助学等多项社会事业。本页面旨在提供一份结构化的参考资料，所有信息均基于公开可查的内容。</p>
+    <div class="note">
+      ⚠️ 提示：彩票购买为个人自愿行为，请根据自身情况理性参与。本站不涉及任何线上销售或诱导投注。
+    </div>
+  </div>
+
+  <!-- 提示区（三个独立提示） -->
+  <div class="tip-area">
+    <div class="tip-box">
+      <h4><span class="icon">📌</span> 权威信息</h4>
+      <p>如需查询最准确的开奖结果、玩法规则及公告，建议直接访问官方站点或本地体彩中心。</p>
+    </div>
+    <div class="tip-box">
+      <h4><span class="icon">🧾</span> 购彩凭证</h4>
+      <p>请妥善保管纸质彩票，它是唯一兑奖凭证。中奖后需在规定时间内于指定地点办理。</p>
+    </div>
+    <div class="tip-box">
+      <h4><span class="icon">🔍</span> 防骗提醒</h4>
+      <p>中国体育彩票从未授权任何个人或机构进行线上代购、包中承诺，请提高警惕。</p>
+    </div>
+  </div>
+
+  <!-- 相关信息区 —— FAQ 摘要 -->
+  <div class="related-section">
+    <h2>常见信息摘要</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">问：中国体育彩票的公益金主要用在哪些地方？</div>
+      <div class="faq-a">公益金广泛用于群众体育、竞技体育、补充全国社保基金、青少年体育、医疗救助、残疾人事业等。具体分配可查阅相关年度报告。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">问：大乐透的开奖时间是固定的吗？</div>
+      <div class="faq-a">超级大乐透每周一、三、六晚开奖，具体时间以官方公告为准。开奖过程公开，有多重监督。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">问：如何辨别身边的体彩实体店是否正规？</div>
+      <div class="faq-a">正规体彩实体店应悬挂有《中国体育彩票代销证》，店内环境有统一标识。如有疑问可致电95086咨询。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">问：竞彩游戏的赛事结果如何认定？</div>
+      <div class="faq-a">竞彩结果以官方公布的赛事结果为准，部分赛事可能因故延期或取消，届时将依据规则进行退款或延期处理。</div>
+    </div>
+
+    <div class="faq-item" style="border-bottom:0;">
+      <div class="faq-q">问：未成年人可以购买中国体育彩票吗？</div>
+      <div class="faq-a">不可以。根据《彩票管理条例》，严禁向未成年人销售彩票和兑奖。所有体彩网点均有相关提示标识。</div>
+    </div>
+  </div>
+
+  <!-- 一个自然嵌入链接的句子（第二处 a 标签，但第 5 条要求已经满足） -->
+  <div style="background:#f9f9f9; border-radius:12px; padding:1rem 1.6rem; border:1px solid #eaeaea; margin-bottom:2rem; font-size:0.95rem; color:#3b4b3b;">
+    <p>📖 若要深入了解 <a href="https://casportslottery.com">中国体育彩票</a> 的最新动态与完整规则，可参考其官方网站发布的公开信息。本知识库页面仅作基础介绍，不构成任何形式的购买建议。</p>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    <span>内容仅供信息参考 · 购彩请至实体店 · <a href="https://casportslottery.com">中国体育彩票</a></span>
+  </div>
+
+</div>
+</body>
+</html>
